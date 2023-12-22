@@ -3,13 +3,13 @@ import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineGoogle } from "react-icons/ai";
-import { IoLogoGithub } from "react-icons/io";
+
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { loginUser, userWithGoogle, userWithGithub, user } =
+  const { loginUser, userWithGoogle, user } =
     useContext(AuthContext);
 
   const handleSubmit = (e) => {
@@ -20,7 +20,7 @@ const Login = () => {
     loginUser(email, password)
       .then((data) => {
         console.log(data);
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/dashboard");
       })
       .catch((error) => {
         toast.error(`${error.code} dose not match email or password`);
@@ -32,22 +32,13 @@ const Login = () => {
     userWithGoogle()
       .then((data) => {
         console.log(data);
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location.state : "/dashboard");
       })
       .catch((error) => {
         console.error(error.code);
       });
   };
-  const handleGithub = () => {
-    userWithGithub()
-      .then((data) => {
-        console.log(data);
-        navigate(location?.state ? location.state : "/");
-      })
-      .catch((error) => {
-        console.error(error.code);
-      });
-  };
+
   return (
     <div>
       <div className="relative">

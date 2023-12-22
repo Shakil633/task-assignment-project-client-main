@@ -10,12 +10,13 @@ import DetailsPage from "../Pages/DetailsPage/DetailsPage";
 import Blog from "../Components/Blog/Blog";
 import Contact from "../Components/Contact/Contact";
 import Error from "../Components/Error/Error";
+import Update from "../Components/Update/Update";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -49,6 +50,14 @@ export const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact></Contact>,
+      },
+      {
+        path: "/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) =>
+          fetch(
+            `https://task-assignment-project-server-main.vercel.app/ownTask/${params.id}`
+          ),
       },
     ],
   },

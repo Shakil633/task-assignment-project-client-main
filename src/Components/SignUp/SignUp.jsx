@@ -1,9 +1,6 @@
 import { updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-
 import toast, { Toaster } from "react-hot-toast";
-import { IoLogoGithub } from "react-icons/io";
-
 import { AiOutlineGoogle } from "react-icons/ai";
 
 import { useContext } from "react";
@@ -11,7 +8,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import auth from "../../firebase/firebase.config";
 
 const SignUp = () => {
-  const { createUser, userWithGoogle, userWithGithub } =
+  const { createUser, userWithGoogle } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
@@ -53,7 +50,7 @@ const SignUp = () => {
             console.error(errorData.code);
           });
 
-        navigate("/login");
+        navigate("/dashboard");
       })
       .catch((error) => {
         if (error.code === "auth/email-already-in-use") {
@@ -68,27 +65,16 @@ const SignUp = () => {
     userWithGoogle()
       .then((data) => {
         console.log(data);
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.error(error.code);
       });
   };
-  const handleGithub = () => {
-    userWithGithub()
-      .then((data) => {
-        console.log(data);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(error.code);
-      });
-  };
+
   return (
     <div className="relative">
       <div className="">
-        {/* <img className="opacity-70 md:h-auto md:w-auto   " src="https://static01.nyt.com/images/2018/03/22/style/22mealshare-1/00mealshare-1-superJumbo.jpg" alt="" />
-            <div className="bg-black opacity-70 absolute top-0 left-0 w-full h-full"></div> */}
       </div>
       <div className="linear absolute w-[100%] top-[2%]  pb-[10%] ">
         <Toaster

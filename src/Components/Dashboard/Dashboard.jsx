@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import  { useContext } from "react";
+import { Link} from "react-router-dom";
 import useTasks from "../../Hooks/UseTasks";
 import Draggable from "react-draggable";
 import UseAxiosDefault from "../../Hooks/UseAxiosDefault";
@@ -7,7 +7,6 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const Dashboard = () => {
   const { tasks, refetch } = useTasks();
-  const navigate = useNavigate();
   const defaultAxios = UseAxiosDefault();
   const { user } = useContext(AuthContext);
 
@@ -71,6 +70,10 @@ const Dashboard = () => {
                     className="btn btn-ghost"
                   >
                     Delete
+                  </Link>
+
+                  <Link to={`/update/${task?._id}`} className="btn btn-ghost">
+                    Edit
                   </Link>
                 </div>
               </Draggable>
