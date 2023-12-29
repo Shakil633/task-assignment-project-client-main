@@ -19,10 +19,13 @@ const Banner = () => {
   };
   return (
     <motion.div
-      className="hero lg:min-h-[90vh] min-h-screen" variants={fadeUp} initial="hidden" whileInView="show"
+      className="hero lg:min-h-[90vh] min-h-screen"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
       style={{
         backgroundImage:
-          "url(https://i.ibb.co/L5mkx2R/Black-and-White-Silhouette-Motivational-Quotes-Facebook-Cover.png)",
+          "url(https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>
@@ -33,7 +36,7 @@ const Banner = () => {
             We will help you to manage your tasks that will be helpful for your
             office life and personal projects
           </p>
-          <Link to="/dashboard" className="btn btn-ghost border border-white">
+          <Link to="/dashboard" className="btn btn-outline text-white hover:text-black border-0 border-white hover:border-white hover:bg-white border-b-4">
             Let's Explore
           </Link>
         </div>
